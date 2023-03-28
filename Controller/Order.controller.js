@@ -1,5 +1,5 @@
 import Order from "../Model/order.schema.js";
-import User from "../Model/user.schema.js";
+// import User from "../Model/user.schema.js";
 import nodemailer from "nodemailer";
 import path from "path";
 import ejs from "ejs";
@@ -49,22 +49,22 @@ export const createOrder = async (req, res) => {
       city,
     });
 
-    // const __filename = fileURLToPath(import.meta.url);
-    // const __dirname = path.dirname(__filename);
-    // const templatePath = path.join(__dirname, "../view/index.ejs");
-    // const data = await ejs.renderFile(templatePath, {
-    //   firstName,
-    //   lastName,
-    //   order,
-    //   totalPrice,
-    // });
+    const __filename = fileURLToPath(import.meta.url);
+    const __dirname = path.dirname(__filename);
+    const templatePath = path.join(__dirname, "../view/index.ejs");
+    const data = await ejs.renderFile(templatePath, {
+      firstName,
+      lastName,
+      order,
+      totalPrice,
+    });
 
     const details = {
       from: "peculiarsmith2000@gmail.com",
       to: email,
       subject: "Testing for Kinox Apparel",
       text: "This is the body",
-      html: "<p>Data</p>",
+      html: data,
     };
 
     mailTransporter.sendMail(details, (err) => {
