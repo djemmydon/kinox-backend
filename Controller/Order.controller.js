@@ -49,22 +49,22 @@ export const createOrder = async (req, res) => {
       city,
     });
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    const templatePath = path.join(__dirname, "../view/index.ejs");
-    const data = await ejs.renderFile(templatePath, {
-      firstName,
-      lastName,
-      order,
-      totalPrice,
-    });
+    // const __filename = fileURLToPath(import.meta.url);
+    // const __dirname = path.dirname(__filename);
+    // const templatePath = path.join(__dirname, "../view/index.ejs");
+    // const data = await ejs.renderFile(templatePath, {
+    //   firstName,
+    //   lastName,
+    //   order,
+    //   totalPrice,
+    // });
 
     const details = {
       from: "peculiarsmith2000@gmail.com",
       to: email,
       subject: "Testing for Kinox Apparel",
       text: "This is the body",
-      html: data,
+      html: "<p>Data</p>",
     };
 
     mailTransporter.sendMail(details, (err) => {
