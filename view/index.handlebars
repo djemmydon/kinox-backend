@@ -472,7 +472,7 @@
                                   "
                                 >
                                   <strong
-                                    >Hi <%= firstName%> <%= lastName %></strong
+                                    >Hi {{this.firstName}} {{this.lastName}}<strong
                                   >
                                 </h1>
                               </td>
@@ -533,7 +533,7 @@
               class="u-row-container bbbbbbb"
               style="padding: 0px; background-color: transparent"
             >
-              <% order.forEach(item => {%>
+              {{#each order}}
               <div
                 class="u-row"
                 style="
@@ -629,7 +629,7 @@
                                       <img
                                         align="center"
                                         border="0"
-                                        src="<%=item.image%>"
+                                        src="{{this.image}}"
                                         alt="Model"
                                         title="Model"
                                         style="
@@ -727,7 +727,7 @@
                                     font-size: 18px;
                                   "
                                 >
-                                  <strong><%=item.name %></strong>
+                                  <strong>{{this.name}}</strong>
                                 </h1>
                               </td>
                             </tr>
@@ -764,7 +764,7 @@
                                   "
                                 >
                                   <p style="font-size: 14px; line-height: 170%">
-                                    <%=item.description %>
+                                    {{this.description}}
                                   </p>
                                 </div>
                               </td>
@@ -810,7 +810,7 @@
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                                     &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
-                                    &nbsp;₦<%=item.price %></strong
+                                    &nbsp;₦{{this.price}}</strong
                                   >
                                 </h1>
                               </td>
@@ -827,7 +827,7 @@
                   <!--[if (mso)|(IE)]></tr></table></td></tr></table><![endif]-->
                 </div>
               </div>
-              <%})%>
+              {{/each}}
             </div>
 
             <div
@@ -1002,7 +1002,7 @@
                                     font-size: 18px;
                                   "
                                 >
-                                  <strong>₦<%=totalPrice %></strong>
+                                  <strong>₦{{this.totalPrice}}</strong>
                                 </h1>
                               </td>
                             </tr>

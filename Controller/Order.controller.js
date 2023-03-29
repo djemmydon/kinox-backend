@@ -4,6 +4,7 @@ import nodemailer from "nodemailer";
 import path from "path";
 import ejs from "ejs";
 import { fileURLToPath } from "url";
+import hbs from "nodemailer-express-handlebars";
 export const createOrder = async (req, res) => {
   const {
     order,
@@ -49,22 +50,31 @@ export const createOrder = async (req, res) => {
       city,
     });
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
-    console.log(__dirname);
-    const templatePath = path.join(__dirname, "../index.ejs");
-    const data = await ejs.renderFile(templatePath, {
-      firstName,
-      lastName,
-      order,
-      totalPrice,
-    });
+    const handlebarOptions = {
+      viewEngine: {
+        extName: ".handlebars",
+        partialsDir: path.resolve("./view"),
+        defaultLayout: false,
+      },
+      viewPath: path.resolve("./view"),
+      extName: ".handlebars",
+    };
+
+    mailTransporter.use("compile", hbs(handlebarOptions));
+
+
 
     const details = {
       from: '"Kinox Aparel" peculiarsmith2000@gmail.com',
       to: email,
       subject: "Testing for Kinox Apparel",
-      html: data,
+      template: "index",
+      context: {
+        order,
+        totalPrice,
+        firstName,
+        lastName,
+      },
     };
 
     mailTransporter.sendMail(details, (err) => {
