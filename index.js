@@ -37,7 +37,7 @@ app.use(
 );
 app.use(
   cors({
-    origin: ["http://localhost:3000", "www.kinoxoriginal.com"],
+    origin: ["http://localhost:3000", "https://www.kinoxoriginal.com"],
   })
 );
 
