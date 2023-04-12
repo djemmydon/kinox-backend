@@ -25,8 +25,8 @@ export const createOrder = async (req, res) => {
   const mailTransporter = nodemailer.createTransport({
     service: "gmail",
     auth: {
-      user: "peculiarsmith2000@gmail.com",
-      pass: "lpdzjrqrfrohpqhn",
+      user: "kinoxapparel@gmail.com",
+      pass: "hfktbzxqwvjavhcm",
     },
   });
 
@@ -65,9 +65,9 @@ export const createOrder = async (req, res) => {
 
 
     const details = {
-      from: '"Kinox Aparel" peculiarsmith2000@gmail.com',
+      from: '"Kinox Aparel" kinoxapparel@gmail.com',
       to: email,
-      subject: "Testing for Kinox Apparel",
+      subject: "Your order is created successfully.",
       template: "index",
       context: {
         order,
